@@ -28,7 +28,7 @@ Pillow==5.4.1
 pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pycparser==2.19
-PyInstaller==3.5.dev0+5edb4f7de
+PyInstaller== 3.6
 pynput==1.4
 pyOpenSSL==19.0.0
 python-dateutil==2.7.5
