@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends "inventoryhome/base.html"%}
+{% block content %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="btn btn-danger btn-lg" href="{% url 'inventory-hematology' %}">Hematology</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'inventory-chemistry' %}">Chemistry</a>
+          </div>
+        </div>
+      </article>
+
+{% endblock content %}
