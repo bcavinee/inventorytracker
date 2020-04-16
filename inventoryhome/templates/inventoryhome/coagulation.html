@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "inventoryhome/base.html"%}
+{% block content %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="btn btn-dark " href="{% url 'inventory-coagulation_inventory' %}">Coagulation Inventory List</a>
+            <a class="btn btn-dark " href="{% url 'inventory-coagulation_checkout' %}">Reagent Checkout</a>
+            <a class="btn btn-dark " href="{% url 'inventory-coagulation_graph' %}">Coagulation Inventory Graph View</a>
+          </div>
+        </div>
+      </article>
+
+{% endblock content %}

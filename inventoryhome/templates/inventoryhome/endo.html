@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "inventoryhome/base.html"%}
+{% block content %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="btn btn-success " href="{% url 'inventory-endo_inventory' %}">Endo Inventory List</a>
+            <a class="btn btn-success " href="{% url 'inventory-endo_checkout' %}">Reagent Checkout</a>
+            <a class="btn btn-success " href="{% url 'inventory-endo_graph' %}">Endo Inventory Graph View</a>
+          </div>
+        </div>
+      </article>
+
+{% endblock content %}

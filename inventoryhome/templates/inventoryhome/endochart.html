@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+{% extends "inventoryhome/base.html"%}
+{% block content %}
+
+<script>
+$(document).ready(function(){
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [{% for item in qs %}'{{item.reagent_name}}',{% endfor %}],
+          datasets: [{
+              label: '# of Product',
+              data: [{% for item in qs %}'{{item.reagent_quantity}}',{% endfor %}],
+              backgroundColor:'rgba(54, 162, 235, 0.2)',
+              borderColor:'rgba(54, 162, 235, 1)',
+
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+});
+
+</script>
+
+<canvas id="myChart" width="400" height="300"></canvas>
+{% endblock content %}

@@ -24,3 +24,36 @@ class Chemistry_Inventory(models.Model):
 
     def __str__(self):
         return self.reagent_name
+
+class Coagulation_Inventory(models.Model):
+
+    reagent_name= models.CharField(max_length=30, unique=True)
+    reagent_quantity= models.IntegerField()
+
+    def __str__(self):
+        return self.reagent_name
+
+class Endo_Inventory(models.Model):
+
+    reagent_name= models.CharField(max_length=30, unique=True)
+    reagent_quantity= models.IntegerField()
+
+    def __str__(self):
+        return self.reagent_name
+
+class Urines_Inventory(models.Model):
+
+    reagent_name= models.CharField(max_length=30, unique=True)
+    reagent_quantity= models.IntegerField()
+
+    def __str__(self):
+        return self.reagent_name
+
+
+class GasesMetals_Inventory(models.Model):
+
+    reagent_name= models.CharField(max_length=30, unique=True)
+    reagent_quantity= models.IntegerField()
+
+    def __str__(self):
+        return self.reagent_name
