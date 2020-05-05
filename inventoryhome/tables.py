@@ -8,7 +8,10 @@ class HematologyTable(tables.Table):
     class Meta:
         model= Hematology_Inventory
         template_name= 'django_tables2/bootstrap.html'
-        fields= ('reagent_name','reagent_quantity',)
+        fields= ('reagent_name','reagent_quantity', 'par_level','average_use',)
+        row_attrs = {
+            'reagent-depletion':  lambda record: record.reagent_depletion,
+        }
         #template_name= 'inventoryhome/hematology_inventory.html'
 
 

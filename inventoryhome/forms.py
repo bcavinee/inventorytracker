@@ -30,3 +30,21 @@ class CoagulationCheckoutForm(forms.Form):
 
     reagent_name= forms.ModelChoiceField(queryset= Coagulation_Inventory.objects.all(), empty_label='Choose Reagent')
     amount_taken= forms.IntegerField(min_value=0)
+
+
+#Average Use Playing
+
+class DateInput(forms.DateInput):
+    input_type= 'date'
+
+class HematologyAverageUseForm(forms.Form):
+
+    reagent_name= forms.ModelChoiceField(queryset= Hematology_Inventory.objects.all(), empty_label='Choose Reagent')
+    start_date= forms.DateField(widget=DateInput)
+    end_date= forms.DateField(widget=DateInput)
+    #download_all_reagent_data= forms.BooleanField(required= False)
+
+class HematologyDownloadAll(forms.Form):
+
+    start_date= forms.DateField(widget=DateInput)
+    end_date= forms.DateField(widget=DateInput)

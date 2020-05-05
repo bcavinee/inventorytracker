@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY= os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'False')
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 
 
@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ['laboratoryinventorytracker.herokuapp.com']
 
 INSTALLED_APPS = [
     'django_tables2',
+    'simple_history',
+    'import_export',
     'users.apps.UsersConfig',
     'crispy_forms',
     'inventoryhome.apps.InventoryhomeConfig',
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'simple_history.middleware.HistoryRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

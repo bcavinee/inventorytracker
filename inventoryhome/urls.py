@@ -13,6 +13,7 @@ urlpatterns = [
     path('hematology/',views.hematology, name='inventory-hematology'),
     path('hematology_inventory/',views.HematologyListView.as_view(), name='inventory-hematology_inventory'),
     path('hematology_checkout/',views.hematology_checkout, name= 'inventory-hematology_checkout'),
+    path('hematology_averageuse/',views.hematology_average_use, name= 'inventory-hematology_average_use'),
     path('coagulation/',views.coagulation, name='inventory-coagulation'),
     path('coagulation_inventory/',views.CoagulationListView.as_view(), name='inventory-coagulation_inventory'),
     path('cogulation_checkout/',views.coagulation_checkout, name= 'inventory-coagulation_checkout'),
@@ -34,6 +35,9 @@ urlpatterns = [
     path('gasesmetals_graph/',views.GasesMetalsChartView.as_view(), name= 'inventory-gasesmetals_graph'),
     path('coagulation_graph/',views.CoagulationChartView.as_view(), name= 'inventory-coagulation_graph'),
     path('endo_graph/',views.EndoChartView.as_view(), name= 'inventory-endo_graph'),
+    #THIS WAS A TEST PATH FOR EXPORTING TO Excel
+    #path(r'exportexcel', views.export_users_xls, name='inventory-export_users_xls'),
+    path('hematology_download_all/',views.hematology_download_all, name= 'inventory-hematology_download_all'),
 ]
 
 

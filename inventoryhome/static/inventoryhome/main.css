@@ -82,3 +82,8 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+
+tr[reagent-depletion='True'] {
+    background-color: #FF0000;
+}
