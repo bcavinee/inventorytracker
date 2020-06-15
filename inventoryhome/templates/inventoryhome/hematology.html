@@ -3,15 +3,19 @@
 {% block content %}
 
       <article class="media content-section">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="btn btn-danger " href="{% url 'inventory-hematology_inventory' %}">Hematology Inventory List</a>
-            <a class="btn btn-danger " href="{% url 'inventory-hematology_checkout' %}">Reagent Checkout</a>
-            <a class="btn btn-danger " href="{% url 'inventory-hematology_graph' %}">Hematology Inventory Graph View</a>
-            <a class="btn btn-danger " href="{% url 'inventory-hematology_average_use' %}">Hematology Average Use</a>
-            <a class="btn btn-danger " href="{% url 'inventory-hematology_download_all' %}">Hematology Download All</a>
+        <div class="media-body" >
+          <div class="article-metadata" >
+            <div class = "btn-group btn-group btn-group-vertical">
+              <div class='col-xs-12 button-wrapper'>
+                <a class="btn btn-danger " href="{% url 'inventory-hematology_inventory' %}">Hematology Inventory List</a>
+                <a id= 'checkout' class="btn btn-danger " href="{% url 'inventory-hematology_checkout' %}">Reagent Checkout</a>
+                <a class="btn btn-danger " href="{% url 'inventory-hematology_graph' %}">Hematology Inventory Graph View</a>
+                <a class="btn btn-danger " href="{% url 'inventory-hematology_average_use' %}">Hematology Total Use</a>
+                <a class="btn btn-danger " href="{% url 'inventory-hematology_download_all' %}">Hematology Comprehensive Download</a>
+            </div>
           </div>
         </div>
       </article>
+
 
 {% endblock content %}

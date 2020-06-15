@@ -1,6 +1,5 @@
 from django import forms
 from .models import Hematology_Inventory, Chemistry_Inventory, Endo_Inventory, Coagulation_Inventory, GasesMetals_Inventory, Urines_Inventory
-
 class HematologyCheckoutForm(forms.Form):
 
     reagent_name= forms.ModelChoiceField(queryset= Hematology_Inventory.objects.all(), empty_label='Choose Reagent')
@@ -48,3 +47,14 @@ class HematologyDownloadAll(forms.Form):
 
     start_date= forms.DateField(widget=DateInput)
     end_date= forms.DateField(widget=DateInput)
+
+
+
+
+
+#ONE TO ONE RELATIONSHIP FORMS
+
+# class HematologyOneTestForm(forms.Form):
+#
+#     reagent_name= forms.ModelChoiceField(queryset= Heme_Test.objects.all(), empty_label='Choose Reagent')
+#     amount_taken= forms.IntegerField(min_value=0)

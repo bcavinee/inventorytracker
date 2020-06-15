@@ -38,6 +38,7 @@ urlpatterns = [
     #THIS WAS A TEST PATH FOR EXPORTING TO Excel
     #path(r'exportexcel', views.export_users_xls, name='inventory-export_users_xls'),
     path('hematology_download_all/',views.hematology_download_all, name= 'inventory-hematology_download_all'),
+
 ]
 
 

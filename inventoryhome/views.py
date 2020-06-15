@@ -18,6 +18,7 @@ from simple_history.models import HistoricalRecords
 import xlwt
 from django.http import HttpResponse
 import itertools
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
 
@@ -32,12 +33,15 @@ def hematology(request):
     return render(request,'inventoryhome/hematology.html')
 
 
-class HematologyListView(SingleTableView):
+class HematologyListView(LoginRequiredMixin,SingleTableView):
+     login_url = '/login/'
+     redirect_field_name = 'redirect_to'
 
      model= Hematology_Inventory
      table_class= HematologyTable
      template_name= 'inventoryhome/hematology_inventory.html'
 
+@login_required(login_url='/login/')
 def hematology_checkout(request):
 
 
@@ -71,6 +75,9 @@ def hematology_checkout(request):
                 messages.success(request, f'***ZERO {reagent} REMAINING NOTIFY SPECALIST***')
 
 
+            reagent.average_use= 0
+            reagent.save()
+
             #if reagent.reagent_quantity <= 0:
             #    messages.success(request, f'***{reagent} DEPLETION NOTIFY SPECALIST***')
 
@@ -81,8 +88,11 @@ def hematology_checkout(request):
     form= HematologyCheckoutForm()
     return render(request,'inventoryhome/hematology_reagent_checkout.html', {'form' : form})
 
-class HematologyChartView(TemplateView):
 
+class HematologyChartView(LoginRequiredMixin,TemplateView):
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name= 'inventoryhome/hematologychart.html'
 
     def get_context_data(self, **kwargs):
@@ -96,14 +106,20 @@ def chemistry(request):
     return render(request,'inventoryhome/chemistry.html')
 
 
-class ChemistryListView(SingleTableView):
+class ChemistryListView(LoginRequiredMixin, SingleTableView):
+
+     login_url = '/login/'
+     redirect_field_name = 'redirect_to'
 
      model= Chemistry_Inventory
      table_class= ChemistryTable
      template_name= 'inventoryhome/chemistry_inventory.html'
 
 
-class ChemistryChartView(TemplateView):
+class ChemistryChartView(LoginRequiredMixin,TemplateView):
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
 
     template_name= 'inventoryhome/chemistrychart.html'
 
@@ -113,7 +129,7 @@ class ChemistryChartView(TemplateView):
         return context
 
 
-
+@login_required(login_url='/login/')
 def chemistry_checkout(request):
 
     if request.method == 'POST':
@@ -141,7 +157,7 @@ def endo(request):
 
     return render(request,'inventoryhome/endo.html')
 
-
+@login_required(login_url='/login/')
 def endo_checkout(request):
 
 
@@ -165,13 +181,20 @@ def endo_checkout(request):
     form= EndoCheckoutForm()
     return render(request,'inventoryhome/endo_reagent_checkout.html', {'form' : form})
 
-class EndoListView(SingleTableView):
+class EndoListView(LoginRequiredMixin,SingleTableView):
+
+     login_url = '/login/'
+     redirect_field_name = 'redirect_to'
 
      model= Endo_Inventory
      table_class= EndoTable
      template_name= 'inventoryhome/endo_inventory.html'
 
-class EndoChartView(TemplateView):
+
+class EndoChartView(LoginRequiredMixin,TemplateView):
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
 
     template_name= 'inventoryhome/endochart.html'
 
@@ -185,6 +208,7 @@ def urines(request):
 
     return render(request,'inventoryhome/urines.html')
 
+@login_required(login_url='/login/')
 def urines_checkout(request):
 
 
@@ -208,13 +232,19 @@ def urines_checkout(request):
     form= UrinesCheckoutForm()
     return render(request,'inventoryhome/urines_reagent_checkout.html', {'form' : form})
 
-class UrinesListView(SingleTableView):
+class UrinesListView(LoginRequiredMixin,SingleTableView):
+
+     login_url = '/login/'
+     redirect_field_name = 'redirect_to'
 
      model= Urines_Inventory
      table_class= UrinesTable
      template_name= 'inventoryhome/urines_inventory.html'
 
-class UrinesChartView(TemplateView):
+class UrinesChartView(LoginRequiredMixin,TemplateView):
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
 
     template_name= 'inventoryhome/urineschart.html'
 
@@ -228,6 +258,7 @@ def gasesmetals(request):
 
     return render(request,'inventoryhome/gasesmetals.html')
 
+@login_required(login_url='/login/')
 def gasesmetals_checkout(request):
 
 
@@ -251,13 +282,19 @@ def gasesmetals_checkout(request):
     form= GasesMetalsCheckoutForm()
     return render(request,'inventoryhome/gasesmetals_reagent_checkout.html', {'form' : form})
 
-class GasesMetalsListView(SingleTableView):
+class GasesMetalsListView(LoginRequiredMixin,SingleTableView):
+
+     login_url = '/login/'
+     redirect_field_name = 'redirect_to'
 
      model= GasesMetals_Inventory
      table_class= GasesMetalsTable
      template_name= 'inventoryhome/gasesmetals_inventory.html'
 
-class GasesMetalsChartView(TemplateView):
+class GasesMetalsChartView(LoginRequiredMixin, TemplateView):
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
 
     template_name= 'inventoryhome/gasesmetalschart.html'
 
@@ -271,6 +308,7 @@ def coagulation(request):
 
     return render(request,'inventoryhome/coagulation.html')
 
+@login_required(login_url='/login/')
 def coagulation_checkout(request):
 
 
@@ -294,13 +332,19 @@ def coagulation_checkout(request):
     form= CoagulationCheckoutForm()
     return render(request,'inventoryhome/coagulation_reagent_checkout.html', {'form' : form})
 
-class CoagulationListView(SingleTableView):
+class CoagulationListView(LoginRequiredMixin,SingleTableView):
+
+     login_url = '/login/'
+     redirect_field_name = 'redirect_to'
 
      model= Coagulation_Inventory
      table_class= CoagulationTable
      template_name= 'inventoryhome/coagulation_inventory.html'
 
-class CoagulationChartView(TemplateView):
+class CoagulationChartView(LoginRequiredMixin,TemplateView):
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
 
     template_name= 'inventoryhome/coagulationchart.html'
 
@@ -310,7 +354,7 @@ class CoagulationChartView(TemplateView):
         return context
 
 
-
+@login_required(login_url='/login/')
 def hematology_average_use(request):
 
     if request.method == 'POST':
