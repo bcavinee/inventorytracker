@@ -63,28 +63,30 @@ def hematology_checkout(request):
 
         # save the object
             try:
+
                 reagent.save()
                 messages.success(request, '***Reagent Removed From Inventory***')
-
+                reagent.average_use= 0
+                reagent.save()
 
                 if reagent.reagent_quantity == 0:
                     messages.success(request, f'***{reagent} DEPLETION NOTIFY SPECALIST***')
 
             except IntegrityError:
 
-                messages.success(request, f'***ZERO {reagent} REMAINING NOTIFY SPECALIST***')
+                messages.success(request, f'***INVALID ENTRY Amount Taken Out Exceeds Total Reagent***')
 
 
-            reagent.average_use= 0
-            reagent.save()
+            # reagent.average_use= 0
+            # reagent.save()
 
             #if reagent.reagent_quantity <= 0:
             #    messages.success(request, f'***{reagent} DEPLETION NOTIFY SPECALIST***')
 
 
     #test= Hematology_Inventory.history.filter(history_date__range=["2020-04-29 22:21:19.540507", "2020-04-29 22:22:08.372321"],reagent_name= 'Testing').values('average_use').distinct()
-    test= Hematology_Inventory.history.filter(history_date__range=["2020-04-29 22:21:19.540507", "2020-04-29 22:22:08.372321"],reagent_name= 'Testing').aggregate(Sum('average_use'))
-    print(test)
+    # test= Hematology_Inventory.history.filter(history_date__range=["2020-04-29 22:21:19.540507", "2020-04-29 22:22:08.372321"],reagent_name= 'Testing').aggregate(Sum('average_use'))
+    # print(test)
     form= HematologyCheckoutForm()
     return render(request,'inventoryhome/hematology_reagent_checkout.html', {'form' : form})
 
@@ -364,6 +366,7 @@ def hematology_average_use(request):
             reagent_name= form.cleaned_data['reagent_name']
             start_date= form.cleaned_data['start_date']
             end_date= form.cleaned_data['end_date']
+            print(end_date)
             new_end = end_date + datetime.timedelta(days=1)
             #USED FOR QUERYING ALLreagent_test= Hematology_Inventory.history.values_list('reagent_name')
 
