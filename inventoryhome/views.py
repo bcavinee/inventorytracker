@@ -366,7 +366,6 @@ def hematology_average_use(request):
             reagent_name= form.cleaned_data['reagent_name']
             start_date= form.cleaned_data['start_date']
             end_date= form.cleaned_data['end_date']
-            print(end_date)
             new_end = end_date + datetime.timedelta(days=1)
             #USED FOR QUERYING ALLreagent_test= Hematology_Inventory.history.values_list('reagent_name')
 
